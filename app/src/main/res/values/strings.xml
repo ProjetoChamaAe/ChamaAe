@@ -1,0 +1,28 @@
+<resources>
+    <string name="app_name">ChamaAe!</string>
+    <!--> TELA DE INICIO <-->
+    <string name="BtnLogin">LOGIN</string>
+    <string name="BtnCadastro">CADASTRA-SE</string>
+    <string name="EdtLogin">USUARIO / E-MAIL</string>
+    <string name="EdtSenha">SENHA</string>
+    <!--> TELA CADASTRO <-->
+    <string name="TxtNome">NOME :</string>
+    <string name="TxtTelefone">TELEFONE :</string>
+    <string name="TxtSobreNome">SOBRE NOME :</string>
+    <string name="TxtEmail">EMAIL :</string>
+    <string name="BtnProx">PROXIMO -></string>
+    <!--> TELA DE END <-->
+    <string name="TxtBuscaEnd">BUSCA ENDEREÇO PELA SUA LOCALIZAÇÃO</string>
+    <string name="BtnBuscaEnd">BUSCAR!</string>
+    <string name="BtnBuscaCEP">BUSCAR CEP</string>
+    <string name="HintEdtCEP">CEP</string>
+    <string name="HintEdtBairro">BAIRRO</string>
+    <string name="HintEdtCidade">CIDADE</string>
+    <string name="HintEdtRua">RUA</string>
+    <string name="HintEdtNRO">NRO. CASA</string>
+    <string name="BtnSalvar">SALVAR</string>
+    <string name="HintEdtComp">COMPLEMENTO</string>
+
+
+
+</resources>

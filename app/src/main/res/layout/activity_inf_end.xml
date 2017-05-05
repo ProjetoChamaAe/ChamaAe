@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_inf_end"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="chamaae.com.br.ActivityInfEnd">
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:background="@drawable/edtcircular"
+        android:ems="10"
+        android:gravity="center"
+        android:hint="@string/HintEdtNRO"
+        android:layout_marginTop="16dp"
+        android:id="@+id/EdtNro"
+        android:layout_below="@+id/EdtRua"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <Spinner
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/SpUf"
+        android:layout_alignTop="@+id/EdtCidade"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_toLeftOf="@+id/EdtCidade"
+        android:layout_toStartOf="@+id/EdtCidade"
+        android:layout_alignBottom="@+id/EdtCidade" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:background="@drawable/edtcircular"
+        android:gravity="center"
+        android:hint="@string/HintEdtBairro"
+        android:ems="10"
+        android:id="@+id/EdtBairro"
+        android:layout_below="@+id/EdtCidade"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="12dp"
+        android:layout_alignRight="@+id/BtnBuscarCEP"
+        android:layout_alignEnd="@+id/BtnBuscarCEP" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:layout_marginTop="14dp"
+        android:id="@+id/EdtRua"
+        android:gravity="center"
+        android:hint="@string/HintEdtRua"
+        android:background="@drawable/edtcircular"
+        android:layout_below="@+id/EdtBairro"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignRight="@+id/EdtBairro"
+        android:layout_alignEnd="@+id/EdtBairro" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:background="@drawable/edtcircular"
+        android:hint="@string/HintEdtCidade"
+        android:gravity="center"
+        android:id="@+id/EdtCidade"
+        android:layout_marginTop="13dp"
+        android:layout_below="@+id/BtnBuscarCEP"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <Button
+        android:text="@string/BtnBuscaCEP"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/BtnBuscarCEP"
+        android:layout_marginTop="10dp"
+        android:layout_below="@+id/EdtCep"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:hint="@string/HintEdtComp"
+        android:gravity="center"
+        android:layout_below="@+id/EdtNro"
+        android:layout_marginTop="13dp"
+        android:id="@+id/EdtComp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:background="@drawable/edtcircular" />
+
+    <Button
+        android:text="@string/BtnSalvar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="11dp"
+        android:id="@+id/BtnSalvar"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:gravity="center"
+        android:hint="@string/HintEdtCEP"
+        android:background="@drawable/edtcircular"
+        android:id="@+id/EdtCep"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+</RelativeLayout>
