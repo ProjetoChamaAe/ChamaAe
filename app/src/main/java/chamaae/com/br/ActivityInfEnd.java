@@ -54,10 +54,10 @@ public class ActivityInfEnd extends AppCompatActivity {
             }
         });
 
-
     }
 
     public class PegaCEP extends AsyncTask<String, Void, String> {
+
         String data;
         String Cidade,Rua,Bairro,UF;
         ProgressDialog pg = new ProgressDialog(ActivityInfEnd.this);
@@ -132,20 +132,14 @@ public class ActivityInfEnd extends AppCompatActivity {
 
             try {
                 JSONObject jsonObject = new JSONObject(json);
-
                 Cidade = jsonObject.getString("localidade");
                 Rua    = jsonObject.getString("logradouro");
                 Bairro = jsonObject.getString("bairro");
                 UF     = jsonObject.getString("uf");
-
             } catch (JSONException e) {
                 e.printStackTrace();
             }
-
         }
-
-
-
     }
 
 

@@ -36,6 +36,22 @@
         android:layout_alignParentEnd="true" />
 
     <EditText
+        android:hint="@string/EdtLogin"
+        android:gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:background="@drawable/edtcircular"
+        android:id="@+id/EdtLogin"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="69dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <EditText
         android:hint="@string/EdtSenha"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -69,24 +85,8 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:textSize="18dp"
-        android:layout_marginTop="42dp"
         android:layout_below="@+id/signin"
-        android:layout_centerHorizontal="true" />
-
-    <EditText
-        android:hint="@string/EdtLogin"
-        android:gravity="center"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:ems="10"
-        android:background="@drawable/edtcircular"
-        android:id="@+id/EdtLogin"
-        android:layout_marginTop="43dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="170dp" />
 
 </RelativeLayout>
