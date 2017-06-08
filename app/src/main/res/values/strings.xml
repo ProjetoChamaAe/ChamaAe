@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">ChamaAe!</string>
     <!--> CHAVE FACEBOOK <-->
-    <string name="facebook_app_id">421364534908576</string>
+    <string name="facebook_app_id">421364351575261</string>
     <string name="fb_login_protocol_scheme">fb421364534908576</string>
     <!--> TELA DE INICIO <-->
     <string name="BtnLogin">LOGIN</string>

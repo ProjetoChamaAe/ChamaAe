@@ -2,10 +2,14 @@ package chamaae.com.br;
 
 import android.app.ActionBar;
 import android.content.Intent;
+import android.content.res.Resources;
+import android.graphics.Point;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.util.Log;
+import android.view.Display;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -19,8 +23,10 @@ import com.facebook.FacebookException;
 import com.facebook.FacebookSdk;
 import com.facebook.GraphRequest;
 import com.facebook.GraphResponse;
+import com.facebook.HttpMethod;
 import com.facebook.Profile;
 import com.facebook.appevents.AppEventsLogger;
+import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
 import com.google.android.gms.auth.api.Auth;
@@ -50,6 +56,9 @@ public class ActivityLogin extends AppCompatActivity implements GoogleApiClient.
     ImageButton ImgBtnFace;
     EditText    EdtLogin,EdtSenha;
 
+
+    String TipoLogin;
+
     private GoogleApiClient ApiClient;
 
     CallbackManager callbackManager;
@@ -60,8 +69,11 @@ public class ActivityLogin extends AppCompatActivity implements GoogleApiClient.
         FacebookSdk.sdkInitialize(getApplicationContext());
         setContentView(R.layout.activity_login);
 
-        getSupportActionBar().setTitle("Chama Ae !");
-        //getSupportActionBar().setBackgroundDrawable(getResources().getDrawable(R.drawable.toolbar));
+        /*getSupportActionBar().setBackgroundDrawable(getResources().getDrawable(R.drawable.toolbar));
+        getSupportActionBar().setDisplayUseLogoEnabled(true);*/
+        getSupportActionBar().setTitle("");
+
+
 
         loginButton = (LoginButton) findViewById(R.id.login_button);
         loginButtonGoogle = (SignInButton) findViewById(R.id.signin);
@@ -78,34 +90,29 @@ public class ActivityLogin extends AppCompatActivity implements GoogleApiClient.
         });
 
         //LOGIN FACEBOOK
-        loginButton.setReadPermissions(Arrays.asList( "public_profile", "email", "user_birthday", "user_friends"));
+        loginButton.setReadPermissions(Arrays.asList("public_profile","email", "user_birthday","user_location"));
         callbackManager = CallbackManager.Factory.create();
         loginButton.registerCallback(callbackManager,new FacebookCallback<LoginResult>(){
-
             @Override
             public void onSuccess(LoginResult loginResult) {
-                GraphRequest DadosUser = GraphRequest.newMeRequest(AccessToken.getCurrentAccessToken(), new GraphRequest.GraphJSONObjectCallback() {
+                Log.i("LOGIN_FACE",loginResult.toString());
+                GraphRequest request = GraphRequest.newMeRequest(loginResult.getAccessToken(),new GraphRequest.GraphJSONObjectCallback(){
                     @Override
                     public void onCompleted(JSONObject object, GraphResponse response) {
-                        Log.v("LoginActivity", response.toString());
                         try {
-                           String nome   = object.getString("name");
-                           String token  = object.getString("token");
-                           String sexo   = object.getString("gender");
-                            Log.i("TOKEN",token);
-                            Log.i("NOME",nome);
-
+                            String Nome  = object.getString("name");
+                            String Email = object.getString("email");
+                            Log.i("JSON_face",object.toString());
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
                     }
                 });
 
-                Bundle parametros = new Bundle();
-                parametros.putString("fields","id,name,email,gender,birthday,token");
-                DadosUser.setParameters(parametros);
-                DadosUser.executeAsync();
-
+                Bundle parameters = new Bundle();
+                parameters.putString("fields", "id,name,email,gender,birthday,location");
+                request.setParameters(parameters);
+                request.executeAsync();
 
             }
 
@@ -116,11 +123,16 @@ public class ActivityLogin extends AppCompatActivity implements GoogleApiClient.
 
             @Override
             public void onError(FacebookException error) {
+                Log.i("ERRO_FACE",error.toString());
+                Toast.makeText(getApplicationContext(),error.toString(),Toast.LENGTH_LONG).show();
 
             }
-
-
-
+        });
+        loginButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                TipoLogin = "FACEBOOK";
+            }
         });
 
         //LGGIN GOOGLE
@@ -133,12 +145,12 @@ public class ActivityLogin extends AppCompatActivity implements GoogleApiClient.
             public void onClick(View view) {
                 Intent signInIntent = Auth.GoogleSignInApi.getSignInIntent(ApiClient);
                 startActivityForResult(signInIntent, 1);
+                TipoLogin = "GOOGLE";
             }
         });
-
     }
 
-    public void StatusLogin (GoogleSignInResult resultado){
+    public void StatusLoginGoogle (GoogleSignInResult resultado){
         GoogleLogin Inf = new GoogleLogin();
         Log.i("RESULTADO", String.valueOf(resultado.getStatus()));
         if(resultado.isSuccess()){
@@ -162,13 +174,13 @@ public class ActivityLogin extends AppCompatActivity implements GoogleApiClient.
         OptionalPendingResult<GoogleSignInResult> login = Auth.GoogleSignInApi.silentSignIn(ApiClient);
         if(login.isDone()){
             GoogleSignInResult resultado = login.get();
-            StatusLogin(resultado);
+            StatusLoginGoogle(resultado);
             Log.i("JA LOGOU","LOGADO");
         }else{
             login.setResultCallback(new ResultCallback<GoogleSignInResult>() {
                 @Override
                 public void onResult(@NonNull GoogleSignInResult googleSignInResult) {
-                    StatusLogin(googleSignInResult);
+                    StatusLoginGoogle(googleSignInResult);
                     Log.i("NAO LOGOU","NAO LOGADO");
                 }
             } );
@@ -180,9 +192,13 @@ public class ActivityLogin extends AppCompatActivity implements GoogleApiClient.
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == 1) {
-            GoogleSignInResult resultado = Auth.GoogleSignInApi.getSignInResultFromIntent(data);
-            StatusLogin(resultado);
+        if(TipoLogin.equals("GOOGLE")){
+            if (requestCode == 1) {
+                GoogleSignInResult resultado = Auth.GoogleSignInApi.getSignInResultFromIntent(data);
+                StatusLoginGoogle(resultado);
+            }
+        }else if(TipoLogin.equals("FACEBOOK")){
+            callbackManager.onActivityResult(requestCode, resultCode, data);
         }
     }
 
@@ -192,4 +208,5 @@ public class ActivityLogin extends AppCompatActivity implements GoogleApiClient.
         ApiClient.stopAutoManage(this);
         ApiClient.disconnect();
     }
+
 }
