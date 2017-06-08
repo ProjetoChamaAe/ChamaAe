@@ -69,17 +69,14 @@ public class ActivityLogin extends AppCompatActivity implements GoogleApiClient.
         FacebookSdk.sdkInitialize(getApplicationContext());
         setContentView(R.layout.activity_login);
 
-        getSupportActionBar().setBackgroundDrawable(getResources().getDrawable(R.drawable.toolbar));
-        getSupportActionBar().setDisplayUseLogoEnabled(true);
+        //getSupportActionBar().setBackgroundDrawable(getResources().getDrawable(R.drawable.toolbar));
+        //getSupportActionBar().setDisplayUseLogoEnabled(true);
         getSupportActionBar().setTitle("");
-
-
 
         loginButton = (LoginButton) findViewById(R.id.login_button);
         loginButtonGoogle = (SignInButton) findViewById(R.id.signin);
         BtnLogin    = (Button)      findViewById(R.id.BtnLogin);
         BtnCadastro = (Button)      findViewById(R.id.BtnCadastro);
-
 
         BtnCadastro.setOnClickListener(new View.OnClickListener() {
             @Override
