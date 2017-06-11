@@ -28,36 +28,95 @@ public class variaveis {
         return ALTERA_USUARIO;
     }
 
-    public final String ID_USER         = "";
+
     // VARIAVEIS INSERE_USUARIO
-    public  String getID_USER() {
+    public static String ID_USER  = null;
+    public static String NOME     = null;
+    public static String FANTASIA = null;
+    public static String EMAIL = null;
+    public static String PWD      = null;
+    public static String TEL1     = null;
+    public static String TEL2     = null;
+    public static String TIPO_LOGIN = null;
+    public static String TOKEN    =  null;
+
+    public static String getIdUser() {
         return ID_USER;
-    }public String getNOME() {
-        return NOME;
-    }public String getFANTASIA() {
-        return FANTASIA;
-    }public String getEMAIL() {
-        return EMAIL;
-    }public String getPWD() {
-        return PWD;
-    }public String getTEL1() {
-        return TEL1;
-    }public String getTEL2() {
-        return TEL2;
-    }public String getTIPO_LOGIN() {
+    }
+
+    public static void setIdUser(String idUser) {
+        ID_USER = idUser;
+    }
+
+    public static void setNOME(String NOME) {
+        variaveis.NOME = NOME;
+    }
+
+    public static void setFANTASIA(String FANTASIA) {
+        variaveis.FANTASIA = FANTASIA;
+    }
+
+    public static void setEMAIL(String EMAIL) {
+        variaveis.EMAIL = EMAIL;
+    }
+
+    public static void setPWD(String PWD) {
+        variaveis.PWD = PWD;
+    }
+
+    public static void setTEL1(String TEL1) {
+        variaveis.TEL1 = TEL1;
+    }
+
+    public static void setTEL2(String TEL2) {
+        variaveis.TEL2 = TEL2;
+    }
+
+    public static String getTipoLogin() {
         return TIPO_LOGIN;
-    }public String getTOKEN() {
+    }
+
+    public static void setTipoLogin(String tipoLogin) {
+        TIPO_LOGIN = tipoLogin;
+    }
+
+    public static void setTOKEN(String TOKEN) {
+        variaveis.TOKEN = TOKEN;
+    }
+
+    public String getID_USER() {
+        return ID_USER;
+    }
+
+    public String getNOME() {
+        return NOME;
+    }
+
+    public String getFANTASIA() {
+        return FANTASIA;
+    }
+
+    public String getEMAIL() {
+        return EMAIL;
+    }
+
+    public String getPWD() {
+        return PWD;
+    }
+
+    public String getTEL1() {
+        return TEL1;
+    }
+
+    public String getTEL2() {
+        return TEL2;
+    }
+
+    public String getTIPO_LOGIN() {
+        return TIPO_LOGIN;
+    }
+
+    public String getTOKEN() {
         return TOKEN;
-    }public final String NOME     = "";
-    public final String FANTASIA = "";
-    public final String EMAIL    = "";
-    public final String PWD      = "";
-    public final String TEL1     = "";
-    public final String TEL2     = "";
-    public final String TIPO_LOGIN = "";
-    public final String TOKEN    =  "";
-
-
-
-
+    }
 }

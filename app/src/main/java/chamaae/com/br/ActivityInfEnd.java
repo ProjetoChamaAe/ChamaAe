@@ -59,8 +59,12 @@ public class ActivityInfEnd extends AppCompatActivity {
         BtnSalvar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                SalvaInformacoes salva = new SalvaInformacoes();
+                variaveis Var = new variaveis();
+                salva.execute(Var.getNOME(),Var.getNOME(),Var.getEMAIL(),Var.getTEL1(),Var.getPWD(),"0","","");
 
-            }
+
+             }
         });
 
 
@@ -111,34 +115,6 @@ public class ActivityInfEnd extends AppCompatActivity {
             pg.dismiss();
 
         }
-        private String PegaJson(String lnk) throws IOException {
-            data = "";
-            InputStream iStream = null;
-            HttpURLConnection urlConnection = null;
-            try {
-                URL url = new URL(lnk);
-                urlConnection = (HttpURLConnection) url.openConnection();
-                urlConnection.connect();
-                iStream = urlConnection.getInputStream();
-                BufferedReader br = new BufferedReader(new InputStreamReader(iStream));
-                StringBuffer sb = new StringBuffer();
-                String line = "";
-                while ((line = br.readLine()) != null) {
-                    sb.append(line);
-                }
-                data = sb.toString();
-                br.close();
-            } catch (Exception e) {
-                Log.d("Error while downloading", e.toString());
-            } finally {
-                iStream.close();
-                urlConnection.disconnect();
-            }
-
-            Log.i("JSON",data);
-            return data;
-
-        }
         private void TrataJson(String json){
 
             try {
@@ -167,47 +143,52 @@ public class ActivityInfEnd extends AppCompatActivity {
             pg.show();
 
         }
-
         @Override
         protected String doInBackground(String... params) {
             try {
-                PegaJson(Var.getBASE_API()+Var.getINSERE_USUARIO()+params[0]+","+params[1]+","+","+params[2]);
+                PegaJson(Var.getBASE_API()+Var.getINSERE_USUARIO()+params[0]+","+params[1]+","+","+params[2]+","+params[3]+","+params[4]+","+params[5]+","+params[6]+","+params[7]);
             } catch (IOException e) {
                 e.printStackTrace();
             }
             return null;
         }
 
-        private String PegaJson(String lnk) throws IOException {
-            data = "";
-            InputStream iStream = null;
-            HttpURLConnection urlConnection = null;
-            try {
-                URL url = new URL(lnk);
-                urlConnection = (HttpURLConnection) url.openConnection();
-                urlConnection.connect();
-                iStream = urlConnection.getInputStream();
-                BufferedReader br = new BufferedReader(new InputStreamReader(iStream));
-                StringBuffer sb = new StringBuffer();
-                String line = "";
-                while ((line = br.readLine()) != null) {
-                    sb.append(line);
-                }
-                data = sb.toString();
-                br.close();
-            } catch (Exception e) {
-                Log.d("Error while downloading", e.toString());
-            } finally {
-                iStream.close();
-                urlConnection.disconnect();
-            }
-
-            Log.i("JSON",data);
-            return data;
-
+        @Override
+        protected void onPostExecute(String s) {
+            super.onPostExecute(s);
+            pg.dismiss();
         }
 
 
+
+    }
+
+    private String PegaJson(String lnk) throws IOException {
+        data = "";
+        InputStream iStream = null;
+        HttpURLConnection urlConnection = null;
+        try {
+            URL url = new URL(lnk);
+            urlConnection = (HttpURLConnection) url.openConnection();
+            urlConnection.connect();
+            iStream = urlConnection.getInputStream();
+            BufferedReader br = new BufferedReader(new InputStreamReader(iStream));
+            StringBuffer sb = new StringBuffer();
+            String line = "";
+            while ((line = br.readLine()) != null) {
+                sb.append(line);
+            }
+            data = sb.toString();
+            br.close();
+        } catch (Exception e) {
+            Log.d("Error while downloading", e.toString());
+        } finally {
+            iStream.close();
+            urlConnection.disconnect();
+        }
+
+        Log.i("JSON",data);
+        return data;
 
     }
 

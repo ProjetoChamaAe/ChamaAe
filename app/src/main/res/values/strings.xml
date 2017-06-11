@@ -25,6 +25,7 @@
     <string name="HintEdtNRO">NRO. CASA</string>
     <string name="BtnSalvar">SALVAR</string>
     <string name="HintEdtComp">COMPLEMENTO</string>
+    <string name="EdtSenha2">SENHA</string>
 
 
 </resources>

@@ -91,4 +91,29 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
+    <EditText
+        android:id="@+id/EdtSenha"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textView2"
+        android:layout_alignStart="@+id/textView2"
+        android:layout_below="@+id/EdtTel"
+        android:layout_marginLeft="6dp"
+        android:layout_marginStart="6dp"
+        android:layout_marginTop="78dp"
+        android:ems="10"
+        android:inputType="textPassword"
+        android:background="@drawable/edtcircular"/>
+
+    <TextView
+        android:id="@+id/TxtSenha"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/EdtSenha"
+        android:layout_alignLeft="@+id/EdtSenha"
+        android:layout_alignStart="@+id/EdtSenha"
+        android:layout_marginBottom="51dp"
+        android:text="@string/EdtSenha2"
+        android:textSize="18sp" />
+
 </RelativeLayout>
