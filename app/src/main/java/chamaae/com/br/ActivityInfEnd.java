@@ -67,8 +67,6 @@ public class ActivityInfEnd extends AppCompatActivity {
              }
         });
 
-
-
     }
 
     public class PegaCEP extends AsyncTask<String, Void, String> {
