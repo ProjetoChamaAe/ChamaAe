@@ -27,6 +27,7 @@ public class ActivityInfEnd extends AppCompatActivity {
     Spinner  SpUF;
     EditText EdtCep,EdtCidade,EdtBairro,EdtRua,EdtNro;
     Button   BtnBuscaCEP,BtnBuscaEND,BtnSalvar;
+    String data;
 
     String EstadosBR[] = {" ","AC", "AL", "AM", "AP", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MS", "MG", "PA", "PB", "PR", "PE", "PI", "RJ", "RN", "RO", "RS", "RR", "SC", "SE", "SP", "TO"};
 
@@ -35,6 +36,7 @@ public class ActivityInfEnd extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_inf_end);
 
+        BtnSalvar    = (Button)   findViewById(R.id.BtnSalvar);
         SpUF         = (Spinner)  findViewById(R.id.SpUf);
         BtnBuscaCEP  = (Button)   findViewById(R.id.BtnBuscarCEP);
         EdtCep       = (EditText) findViewById(R.id.EdtCep);
@@ -53,6 +55,15 @@ public class ActivityInfEnd extends AppCompatActivity {
                 }
             }
         });
+
+        BtnSalvar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
+
 
     }
 
@@ -142,7 +153,63 @@ public class ActivityInfEnd extends AppCompatActivity {
         }
     }
 
+    public class SalvaInformacoes extends AsyncTask<String, Void, String>{
 
+        ProgressDialog pg = new ProgressDialog(ActivityInfEnd.this);
+        variaveis Var = new variaveis();
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            pg.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+            pg.setCancelable(false);
+            pg.setMessage("GRAVANDO INFORMAÇÕES AGUARDE ...");
+            pg.show();
+
+        }
+
+        @Override
+        protected String doInBackground(String... params) {
+            try {
+                PegaJson(Var.getBASE_API()+Var.getINSERE_USUARIO()+params[0]+","+params[1]+","+","+params[2]);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            return null;
+        }
+
+        private String PegaJson(String lnk) throws IOException {
+            data = "";
+            InputStream iStream = null;
+            HttpURLConnection urlConnection = null;
+            try {
+                URL url = new URL(lnk);
+                urlConnection = (HttpURLConnection) url.openConnection();
+                urlConnection.connect();
+                iStream = urlConnection.getInputStream();
+                BufferedReader br = new BufferedReader(new InputStreamReader(iStream));
+                StringBuffer sb = new StringBuffer();
+                String line = "";
+                while ((line = br.readLine()) != null) {
+                    sb.append(line);
+                }
+                data = sb.toString();
+                br.close();
+            } catch (Exception e) {
+                Log.d("Error while downloading", e.toString());
+            } finally {
+                iStream.close();
+                urlConnection.disconnect();
+            }
+
+            Log.i("JSON",data);
+            return data;
+
+        }
+
+
+
+    }
 
 
 
