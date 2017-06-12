@@ -12,6 +12,8 @@
     <string name="TxtNome">NOME :</string>
     <string name="TxtTelefone">TELEFONE :</string>
     <string name="TxtSobreNome">SOBRE NOME :</string>
+    <string name="TxtSenha">SENHA :</string>
+    <string name="TxtSConfenha">CONFIRME SUA SENHA :</string>
     <string name="TxtEmail">EMAIL :</string>
     <string name="BtnProx">PROXIMO -></string>
     <!--> TELA DE END <-->

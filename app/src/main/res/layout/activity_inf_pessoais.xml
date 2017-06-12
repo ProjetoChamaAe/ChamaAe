@@ -73,7 +73,7 @@
         android:fontFamily="sans-serif"
         android:textSize="18sp"
         android:textColor="?attr/actionModeSplitBackground"
-        android:layout_marginTop="63dp"
+        android:layout_marginTop="10dp"
         android:layout_alignParentTop="true"
         android:layout_alignRight="@+id/textView"
         android:layout_alignEnd="@+id/textView" />
@@ -95,25 +95,59 @@
         android:id="@+id/EdtSenha"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/textView2"
-        android:layout_alignStart="@+id/textView2"
-        android:layout_below="@+id/EdtTel"
-        android:layout_marginLeft="6dp"
-        android:layout_marginStart="6dp"
-        android:layout_marginTop="78dp"
+        android:layout_marginTop="27dp"
         android:ems="10"
         android:inputType="textPassword"
-        android:background="@drawable/edtcircular"/>
+        android:background="@drawable/edtcircular"
+        android:gravity="center"
+        android:layout_alignTop="@+id/TxtSenha"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
     <TextView
         android:id="@+id/TxtSenha"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/EdtSenha"
+        android:text="@string/TxtSenha"
+        android:textSize="18sp"
+        android:layout_below="@+id/EdtTel"
+        android:layout_alignLeft="@+id/textView2"
+        android:layout_alignStart="@+id/textView2"
+        android:layout_marginTop="28dp" />
+
+    <Button
+        android:id="@+id/BtnSalvarCli"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="13dp"
+        android:text="@string/BtnSalvar"
+        android:layout_alignParentBottom="true"
+        android:layout_alignLeft="@+id/TxtSenha"
+        android:layout_alignStart="@+id/TxtSenha"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <EditText
+        android:id="@+id/EdtConfimaSenha"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPassword"
+        android:background="@drawable/edtcircular"
+        android:gravity="center"
+        android:layout_below="@+id/textView3"
         android:layout_alignLeft="@+id/EdtSenha"
-        android:layout_alignStart="@+id/EdtSenha"
-        android:layout_marginBottom="51dp"
-        android:text="@string/EdtSenha2"
-        android:textSize="18sp" />
+        android:layout_alignStart="@+id/EdtSenha" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="11dp"
+        android:text="CONFIRME A SENHA :"
+        android:textSize="18sp"
+        android:layout_below="@+id/EdtSenha"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
 </RelativeLayout>

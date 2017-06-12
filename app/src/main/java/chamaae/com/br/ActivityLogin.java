@@ -1,9 +1,11 @@
 package chamaae.com.br;
 
 import android.app.ActionBar;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Point;
+import android.os.AsyncTask;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -44,6 +46,12 @@ import com.google.android.gms.common.api.Status;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.Arrays;
 
 import static com.facebook.Profile.getCurrentProfile;
@@ -56,7 +64,7 @@ public class ActivityLogin extends AppCompatActivity implements GoogleApiClient.
     ImageButton ImgBtnFace;
     EditText    EdtLogin,EdtSenha;
 
-    String TipoLogin;
+    String TipoLogin,data;
 
     private GoogleApiClient ApiClient;
 
@@ -76,11 +84,16 @@ public class ActivityLogin extends AppCompatActivity implements GoogleApiClient.
         loginButtonGoogle = (SignInButton) findViewById(R.id.signin);
         BtnLogin    = (Button)      findViewById(R.id.BtnLogin);
         BtnCadastro = (Button)      findViewById(R.id.BtnCadastro);
+        EdtLogin    = (EditText)  findViewById(R.id.EdtLogin);
+        EdtSenha    = (EditText)  findViewById(R.id.EdtSenha);
+
+        EdtLogin.requestFocus();
 
         BtnCadastro.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent ChamaCad = new Intent(ActivityLogin.this,ActivityCadastroPrincipal.class);
+                //Intent ChamaCad = new Intent(ActivityLogin.this,ActivityCadastroPrincipal.class);
+                Intent ChamaCad = new Intent(ActivityLogin.this,ActivityInfPessoais.class);
                 startActivity(ChamaCad);
             }
         });
@@ -144,6 +157,18 @@ public class ActivityLogin extends AppCompatActivity implements GoogleApiClient.
                 TipoLogin = "GOOGLE";
             }
         });
+
+        //LOGIN NORMAL
+        BtnLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Login login = new Login();
+                login.execute(EdtLogin.getText().toString(),EdtLogin.getText().toString(),EdtSenha.getText().toString());
+            }
+        });
+
+
+
     }
 
     public void StatusLoginGoogle (GoogleSignInResult resultado){
@@ -203,6 +228,67 @@ public class ActivityLogin extends AppCompatActivity implements GoogleApiClient.
         super.onDestroy();
         ApiClient.stopAutoManage(this);
         ApiClient.disconnect();
+    }
+
+    public class Login extends AsyncTask<String, Void, String> {
+
+        ProgressDialog pg = new ProgressDialog(ActivityLogin.this);
+        variaveis Var = new variaveis();
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            pg.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+            pg.setCancelable(false);
+            pg.setMessage("FAZENDO LOGIN AGUARDE ...");
+            pg.show();
+        }
+
+        @Override
+        protected String doInBackground(String... params) {
+
+            try {
+                PegaJson(Var.getBASE_API()+Var.getLOGIN_USUARIO()+params[0].toUpperCase()+"/"+params[1]+"/"+params[2]);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            super.onPostExecute(s);
+            pg.dismiss();
+        }
+    }
+
+    private String PegaJson(String lnk) throws IOException {
+        data = "";
+        InputStream iStream = null;
+        HttpURLConnection urlConnection = null;
+        try {
+            URL url = new URL(lnk);
+            urlConnection = (HttpURLConnection) url.openConnection();
+            urlConnection.connect();
+            iStream = urlConnection.getInputStream();
+            BufferedReader br = new BufferedReader(new InputStreamReader(iStream));
+            StringBuffer sb = new StringBuffer();
+            String line = "";
+            while ((line = br.readLine()) != null) {
+                sb.append(line);
+            }
+            data = sb.toString();
+            br.close();
+        } catch (Exception e) {
+            Log.d("Error while downloading", e.toString());
+        } finally {
+            iStream.close();
+            urlConnection.disconnect();
+        }
+
+        Log.i("JSON",data);
+        return data;
+
     }
 
 }

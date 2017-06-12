@@ -61,9 +61,7 @@ public class ActivityInfEnd extends AppCompatActivity {
             public void onClick(View v) {
                 SalvaInformacoes salva = new SalvaInformacoes();
                 variaveis Var = new variaveis();
-                salva.execute(Var.getNOME(),Var.getNOME(),Var.getEMAIL(),Var.getTEL1(),Var.getPWD(),"0","","");
-
-
+                salva.execute(Var.getNOME(),Var.getNOME(),Var.getEMAIL(),Var.getTEL1(),Var.getPWD(),"0",null,null);
              }
         });
 
