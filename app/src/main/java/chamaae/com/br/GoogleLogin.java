@@ -15,6 +15,15 @@ public class GoogleLogin {
     public static String Email;
     public static String Token;
     public static Uri     Foto;
+    public static String Id;
+
+    public static String getId() {
+        return Id;
+    }
+
+    public static void setId(String id) {
+        Id = id;
+    }
 
     public static Uri getFoto() {
         return Foto;

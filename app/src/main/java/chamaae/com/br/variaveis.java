@@ -7,16 +7,28 @@ package chamaae.com.br;
 public class variaveis {
 
     // METODOS API (ADICIONAR AQUI)
-    public final String BASE_API = "http://192.168.0.104:5050/datasnap/json";
+    public final String BASE_API = "http://192.168.0.159:5050/datasnap/json";
     public final String RETORNA_USUARIO = "/TUsuarios/RetornaUsuario/";
     public final String INSERE_USUARIO  = "/TUsuarios/InsereUsuario/";
     public final String ALTERA_USUARIO  = "/TUsuarios/AlteraUsuario/";
+    public final String LOGIN_USUARIO_GOOGLE   = "/TUsuarios/LoginUsuarioGoogle/";
+    public final String LOGIN_USUARIO   = "/TUsuarios/LoginUsuario/";
+    public final String LOGIN_USUARIO_FACEBOOK = "/TUsuarios/LoginUsuarioFacebook/";
+
+    public String getLOGIN_USUARIO_FACEBOOK() {
+        return LOGIN_USUARIO_FACEBOOK;
+    }
+
+
+    public String getLOGIN_USUARIO_GOOGLE() {
+        return LOGIN_USUARIO_GOOGLE;
+    }
+
 
     public String getLOGIN_USUARIO() {
         return LOGIN_USUARIO;
     }
 
-    public final String LOGIN_USUARIO   = "/TUsuarios/LoginUsuario/";
 
     public String getBASE_API() {
         return BASE_API;

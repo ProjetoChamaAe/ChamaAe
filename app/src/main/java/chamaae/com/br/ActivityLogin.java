@@ -3,6 +3,7 @@ package chamaae.com.br;
 import android.app.ActionBar;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.graphics.Point;
 import android.os.AsyncTask;
@@ -64,11 +65,13 @@ public class ActivityLogin extends AppCompatActivity implements GoogleApiClient.
     ImageButton ImgBtnFace;
     EditText    EdtLogin,EdtSenha;
 
-    String TipoLogin,data;
+    String TipoLogin,data,NomeF,EmailF,IdF;
 
     private GoogleApiClient ApiClient;
 
     CallbackManager callbackManager;
+    SharedPreferences.Editor editor;
+    SharedPreferences config;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,6 +82,11 @@ public class ActivityLogin extends AppCompatActivity implements GoogleApiClient.
         //getSupportActionBar().setBackgroundDrawable(getResources().getDrawable(R.drawable.toolbar));
         //getSupportActionBar().setDisplayUseLogoEnabled(true);
         getSupportActionBar().setTitle("");
+
+        editor = getSharedPreferences("CONFIG", MODE_PRIVATE).edit();
+        config = getSharedPreferences("CONFIG", MODE_PRIVATE);
+
+        TipoLogin = config.getString("TIPO_LOGIN",null);
 
         loginButton = (LoginButton) findViewById(R.id.login_button);
         loginButtonGoogle = (SignInButton) findViewById(R.id.signin);
@@ -109,9 +117,18 @@ public class ActivityLogin extends AppCompatActivity implements GoogleApiClient.
                     @Override
                     public void onCompleted(JSONObject object, GraphResponse response) {
                         try {
-                            String Nome  = object.getString("name");
-                            String Email = object.getString("email");
+                            NomeF  = object.getString("name");
+                            EmailF = object.getString("email");
+                            IdF    = object.getString("id");
                             Log.i("JSON_face",object.toString());
+
+                            TipoLogin = "FACEBOOK";
+                            Login login = new Login();
+                            login.execute(IdF,NomeF.toUpperCase(),EmailF);
+
+                            editor.putString("TIPO_LOGIN","FACEBOOK");
+                            editor.commit();
+
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
@@ -139,12 +156,12 @@ public class ActivityLogin extends AppCompatActivity implements GoogleApiClient.
         });
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
+            public void onClick(View v) {
                 TipoLogin = "FACEBOOK";
             }
         });
 
-        //LGGIN GOOGLE
+        //LOGIN GOOGLE
         GoogleSignInOptions LoginOpcoes = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
         .requestEmail().build();
         ApiClient = new GoogleApiClient.Builder(this)
@@ -155,6 +172,8 @@ public class ActivityLogin extends AppCompatActivity implements GoogleApiClient.
                 Intent signInIntent = Auth.GoogleSignInApi.getSignInIntent(ApiClient);
                 startActivityForResult(signInIntent, 1);
                 TipoLogin = "GOOGLE";
+                editor.putString("TIPO_LOGIN","GOOGLE");
+                editor.commit();
             }
         });
 
@@ -163,11 +182,16 @@ public class ActivityLogin extends AppCompatActivity implements GoogleApiClient.
             @Override
             public void onClick(View v) {
                 Login login = new Login();
-                login.execute(EdtLogin.getText().toString(),EdtLogin.getText().toString(),EdtSenha.getText().toString());
+                if(EdtLogin.getText().toString().isEmpty() || EdtSenha.getText().toString().isEmpty()) {
+                    Toast.makeText(getApplicationContext(),"INFORME OS DADOS DO SEU LOGIN !",Toast.LENGTH_SHORT).show();
+                }else{
+                    login.execute(EdtLogin.getText().toString(), EdtLogin.getText().toString(), EdtSenha.getText().toString());
+                    TipoLogin = "NORMAL";
+                    editor.putString("TIPO_LOGIN","NORMAL");
+                    editor.commit();
+                }
             }
         });
-
-
 
     }
 
@@ -180,7 +204,13 @@ public class ActivityLogin extends AppCompatActivity implements GoogleApiClient.
             Inf.setEmail(conta.getEmail());
             Inf.setToken(conta.getIdToken());
             Inf.setFoto(conta.getPhotoUrl());
-            Log.i("NOME LOGIN",conta.getDisplayName());
+            Inf.setId(conta.getId());
+
+            Login log = new Login();
+            log.execute(Inf.getId(),Inf.getToken(),Inf.getNome().toUpperCase(),Inf.getEmail());
+
+            Log.i("ID",Inf.getId());
+
         }
     }
 
@@ -196,7 +226,8 @@ public class ActivityLogin extends AppCompatActivity implements GoogleApiClient.
         if(login.isDone()){
             GoogleSignInResult resultado = login.get();
             StatusLoginGoogle(resultado);
-            Log.i("JA LOGOU","LOGADO");
+            Log.i("JA LOGOU","LOGADO");//EXECUTAR SELECT API
+
         }else{
             login.setResultCallback(new ResultCallback<GoogleSignInResult>() {
                 @Override
@@ -206,7 +237,6 @@ public class ActivityLogin extends AppCompatActivity implements GoogleApiClient.
                 }
             } );
         }
-
 
     }
 
@@ -248,7 +278,13 @@ public class ActivityLogin extends AppCompatActivity implements GoogleApiClient.
         protected String doInBackground(String... params) {
 
             try {
-                PegaJson(Var.getBASE_API()+Var.getLOGIN_USUARIO()+params[0].toUpperCase()+"/"+params[1]+"/"+params[2]);
+                if(TipoLogin.equals("NORMAL")) {
+                    PegaJson(Var.getBASE_API() + Var.getLOGIN_USUARIO() + params[0].toUpperCase() + "/" + params[1] + "/" + params[2]);
+                }else if(TipoLogin.equals("GOOGLE")){
+                    PegaJson(Var.getBASE_API() + Var.getLOGIN_USUARIO_GOOGLE() + params[0] + "/" + params[1] + "/" + params[2] + "/" + params[3]);
+                }else{
+                    PegaJson(Var.getBASE_API() + Var.getLOGIN_USUARIO_FACEBOOK() + params[0] + "/" + params[1] + "/" + params[2]);
+                }
             } catch (IOException e) {
                 e.printStackTrace();
             }

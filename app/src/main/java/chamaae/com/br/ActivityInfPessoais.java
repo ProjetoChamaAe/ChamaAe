@@ -47,9 +47,6 @@ public class ActivityInfPessoais extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(),"AS SENHAS NAO CONFEREM !",Toast.LENGTH_LONG).show();
                 }else {
                     salva.execute(EdtNome.getText().toString(),EdtEmail.getText().toString(), EdtTel.getText().toString(), EdtSenha.getText().toString(), "0", "", "");
-                    if(data.equals("Gravado")){
-                        Toast.makeText(getApplicationContext(),"REGISTRO GRAVADO COM SUCESSO !",Toast.LENGTH_SHORT).show();
-                    }
 
                 }
             }
