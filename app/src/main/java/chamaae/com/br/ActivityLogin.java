@@ -62,7 +62,6 @@ public class ActivityLogin extends AppCompatActivity implements GoogleApiClient.
     LoginButton   loginButton;
     SignInButton  loginButtonGoogle;
     Button      BtnCadastro,BtnLogin;
-    ImageButton ImgBtnFace;
     EditText    EdtLogin,EdtSenha;
 
     String TipoLogin,data,NomeF,EmailF,IdF;
