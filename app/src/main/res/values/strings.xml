@@ -1,13 +1,30 @@
 <resources>
     <string name="app_name">Chama Ae!</string>
+
     <!--> CHAVE FACEBOOK <-->
     <string name="facebook_app_id">421364351575261</string>
     <string name="fb_login_protocol_scheme">fb421364351575261</string>
+
+    <!--> MENSAGENS <-->
+    <string name="MsgSenhaErrada">AS SENHAS NAO CONFEREM !</string>
+    <string name="MsgDadosLogin">INFORME OS DADOS DO SEU LOGIN !</string>
+    <string name="MsgFazendoLogin">FAZENDO LOGIN AGUARDE …</string>
+    <string name="MsgGravaDados">GRAVANDO INFORMAÇÕES AGUARDE …</string>
+
+    <!--> TELA DE SERVIÇOS <-->
+    <string name="CfgConta">Conta</string>
+    <string name="Compart">Compartilhar</string>
+    <string name="Historico">Historico</string>
+    <string name="Warnning">Denúncias</string>
+    <string name="Serviços">Serviços</string>
+
+
     <!--> TELA DE INICIO <-->
     <string name="BtnLogin">LOGIN</string>
     <string name="BtnCadastro">CADASTRA-SE</string>
     <string name="EdtLogin">USUARIO / E-MAIL</string>
     <string name="EdtSenha">SENHA</string>
+
     <!--> TELA CADASTRO <-->
     <string name="TxtNome">NOME :</string>
     <string name="TxtTelefone">TELEFONE :</string>
@@ -16,6 +33,7 @@
     <string name="TxtSConfenha">CONFIRME SUA SENHA :</string>
     <string name="TxtEmail">EMAIL :</string>
     <string name="BtnProx">PROXIMO -></string>
+
     <!--> TELA DE END <-->
     <string name="TxtBuscaEnd">BUSCA ENDEREÇO PELA SUA LOCALIZAÇÃO</string>
     <string name="BtnBuscaEnd">BUSCAR!</string>
@@ -28,6 +46,12 @@
     <string name="BtnSalvar">SALVAR</string>
     <string name="HintEdtComp">COMPLEMENTO</string>
     <string name="EdtSenha2">SENHA</string>
+    <string name="title_activity_servicos">Serviços</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
 
 
 </resources>

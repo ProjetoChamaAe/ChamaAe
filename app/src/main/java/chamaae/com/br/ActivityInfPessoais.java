@@ -44,7 +44,7 @@ public class ActivityInfPessoais extends AppCompatActivity {
                 SalvaInformacoes salva = new SalvaInformacoes();
 
                 if(!EdtSenha.getText().toString().equals(EdtConfirmaSenha.getText().toString())){
-                    Toast.makeText(getApplicationContext(),"AS SENHAS NAO CONFEREM !",Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(),getApplicationContext().getString(R.string.MsgSenhaErrada),Toast.LENGTH_LONG).show();
                 }else {
                     salva.execute(EdtNome.getText().toString(),EdtEmail.getText().toString(), EdtTel.getText().toString(), EdtSenha.getText().toString(), "0", "", "");
 
@@ -64,7 +64,7 @@ public class ActivityInfPessoais extends AppCompatActivity {
             super.onPreExecute();
             pg.setProgressStyle(ProgressDialog.STYLE_SPINNER);
             pg.setCancelable(false);
-            pg.setMessage("GRAVANDO INFORMAÇÕES AGUARDE ...");
+            pg.setMessage(getApplicationContext().getString(R.string.MsgGravaDados));
             pg.show();
 
         }

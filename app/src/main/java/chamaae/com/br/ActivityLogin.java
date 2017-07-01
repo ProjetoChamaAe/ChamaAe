@@ -182,7 +182,7 @@ public class ActivityLogin extends AppCompatActivity implements GoogleApiClient.
             public void onClick(View v) {
                 Login login = new Login();
                 if(EdtLogin.getText().toString().isEmpty() || EdtSenha.getText().toString().isEmpty()) {
-                    Toast.makeText(getApplicationContext(),"INFORME OS DADOS DO SEU LOGIN !",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(),getApplicationContext().getString(R.string.MsgDadosLogin),Toast.LENGTH_SHORT).show();
                 }else{
                     login.execute(EdtLogin.getText().toString(), EdtLogin.getText().toString(), EdtSenha.getText().toString());
                     TipoLogin = "NORMAL";
@@ -269,7 +269,7 @@ public class ActivityLogin extends AppCompatActivity implements GoogleApiClient.
             super.onPreExecute();
             pg.setProgressStyle(ProgressDialog.STYLE_SPINNER);
             pg.setCancelable(false);
-            pg.setMessage("FAZENDO LOGIN AGUARDE ...");
+            pg.setMessage(getApplicationContext().getString(R.string.MsgFazendoLogin));
             pg.show();
         }
 
@@ -278,13 +278,21 @@ public class ActivityLogin extends AppCompatActivity implements GoogleApiClient.
 
             try {
                 if(TipoLogin.equals("NORMAL")) {
-                    PegaJson(Var.getBASE_API() + Var.getLOGIN_USUARIO() + params[0].toUpperCase() + "/" + params[1] + "/" + params[2]);
+                    Var.setIdUser(PegaJson(Var.getBASE_API() + Var.getLOGIN_USUARIO() + params[0].toUpperCase() + "/" + params[1] + "/" + params[2]).replace("\"",""));
+                    Log.i("LINK",Var.getBASE_API()+Var.RETORNA_USUARIO+Var.getID_USER().replace("\"",""));
+                    TrataJson(PegaJson(Var.getBASE_API()+Var.RETORNA_USUARIO+Var.getID_USER()));
                 }else if(TipoLogin.equals("GOOGLE")){
-                    PegaJson(Var.getBASE_API() + Var.getLOGIN_USUARIO_GOOGLE() + params[0] + "/" + params[1] + "/" + params[2] + "/" + params[3]);
+                    Var.setIdUser(PegaJson(Var.getBASE_API() + Var.getLOGIN_USUARIO_GOOGLE() + params[0] + "/" + params[1] + "/" + params[2] + "/" + params[3]).replace("\"",""));
+                    Log.i("LINK",Var.getBASE_API()+Var.RETORNA_USUARIO+Var.getID_USER().replace("\"",""));
+                    TrataJson(PegaJson(Var.getBASE_API()+Var.RETORNA_USUARIO+Var.getID_USER()));
                 }else{
-                    PegaJson(Var.getBASE_API() + Var.getLOGIN_USUARIO_FACEBOOK() + params[0] + "/" + params[1] + "/" + params[2]);
+                    Var.setIdUser(PegaJson(Var.getBASE_API() + Var.getLOGIN_USUARIO_FACEBOOK() + params[0] + "/" + params[1] + "/" + params[2]).replace("\"",""));
+                    Log.i("LINK",Var.getBASE_API()+Var.RETORNA_USUARIO+Var.getID_USER().replace("\"",""));
+                    TrataJson(PegaJson(Var.getBASE_API()+Var.RETORNA_USUARIO+Var.getID_USER()));
                 }
             } catch (IOException e) {
+                e.printStackTrace();
+            } catch (JSONException e) {
                 e.printStackTrace();
             }
             return null;
@@ -293,8 +301,26 @@ public class ActivityLogin extends AppCompatActivity implements GoogleApiClient.
         @Override
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
+            Log.i("LOGIN",Var.getID_USER());
+            if(!Var.getID_USER().isEmpty() || !Var.getID_USER().equals("")){
+                Intent ChamaServ = new Intent(ActivityLogin.this,ActivityServicos.class);
+                startActivity(ChamaServ);
+            }
             pg.dismiss();
         }
+
+        private void TrataJson(String json) throws JSONException {
+            JSONObject jsonObject = new JSONObject(json);
+            JSONObject Fields = jsonObject.getJSONObject("fields");
+            Var.setNOME(Fields.getString("Nome"));
+            Var.setEMAIL(Fields.getString("Email"));
+
+            Log.i("NOME",Var.getNOME());
+
+        }
+
+
+
     }
 
     private String PegaJson(String lnk) throws IOException {
