@@ -7,7 +7,7 @@ package chamaae.com.br;
 public class variaveis {
 
     // METODOS API (ADICIONAR AQUI)
-    public final String BASE_API = "http://192.168.0.159:5050/datasnap/json";
+    public final String BASE_API = "http://192.168.0.101:5050/datasnap/json";
     public final String RETORNA_USUARIO = "/TUsuarios/RetornaUsuario/";
     public final String INSERE_USUARIO  = "/TUsuarios/InsereUsuario/";
     public final String ALTERA_USUARIO  = "/TUsuarios/AlteraUsuario/";
@@ -137,4 +137,6 @@ public class variaveis {
     public String getTOKEN() {
         return TOKEN;
     }
+
+
 }

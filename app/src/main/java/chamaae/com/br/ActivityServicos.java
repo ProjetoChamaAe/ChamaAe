@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -30,10 +31,8 @@ public class ActivityServicos extends AppCompatActivity
 
     TextView  TxtNomePessoa;
     TextView  TxtEmailPessoa;
-    ImageView ImgLogo;
 
     variaveis Var;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -145,8 +144,14 @@ public class ActivityServicos extends AppCompatActivity
         return true;
     }
 
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
 
+        if(keyCode == KeyEvent.KEYCODE_BACK){
+            Log.i("EXIT","SAIR");
+            finish();
+        }
 
-
-
+        return super.onKeyDown(keyCode, event);
+    }
 }

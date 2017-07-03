@@ -59,7 +59,7 @@
         <activity
             android:name=".ActivityServicos"
             android:label="@string/title_activity_servicos"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar"/>
     </application>
 
 </manifest>
