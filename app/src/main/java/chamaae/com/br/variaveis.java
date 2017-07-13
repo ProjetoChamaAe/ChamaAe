@@ -7,8 +7,9 @@ package chamaae.com.br;
 public class variaveis {
 
     // METODOS API (ADICIONAR AQUI)
-    public final String BASE_API = "http://192.168.0.101:5050/datasnap/json";
-    public final String RETORNA_USUARIO = "/TUsuarios/RetornaUsuario/";
+    public final String BASE_API = "http://192.168.0.103:5050/datasnap/json";
+    public final String RETORNA_USUARIO  = "/TUsuarios/RetornaUsuario/";
+    public final String RETORNA_ENDERECO = "/TUsuarios/RetornaEndereco/";
     public final String INSERE_USUARIO  = "/TUsuarios/InsereUsuario/";
     public final String ALTERA_USUARIO  = "/TUsuarios/AlteraUsuario/";
     public final String LOGIN_USUARIO_GOOGLE   = "/TUsuarios/LoginUsuarioGoogle/";
@@ -47,7 +48,6 @@ public class variaveis {
     }
 
 
-    // VARIAVEIS INSERE_USUARIO
     public static String ID_USER  = null;
     public static String NOME     = null;
     public static String FANTASIA = null;
@@ -56,7 +56,132 @@ public class variaveis {
     public static String TEL1     = null;
     public static String TEL2     = null;
     public static String TIPO_LOGIN = null;
-    public static String TOKEN    =  null;
+    public static String TOKEN     =  null;
+    public static String PRESTADOR = null;
+
+    public static String getPRESTADOR() {
+        return PRESTADOR;
+    }
+
+    public static void setPRESTADOR(String PRESTADOR) {
+        variaveis.PRESTADOR = PRESTADOR;
+    }
+
+    public static String getCPFCNPJ() {
+        return CPFCNPJ;
+    }
+
+    public static void setCPFCNPJ(String CPFCNPJ) {
+        variaveis.CPFCNPJ = CPFCNPJ;
+    }
+
+    public static String CPFCNPJ  = null;
+
+    public String getRETORNA_ENDERECO() {
+        return RETORNA_ENDERECO;
+    }
+
+    public static String getIdEndereco() {
+        return ID_ENDERECO;
+    }
+
+    public static void setIdEndereco(String idEndereco) {
+        ID_ENDERECO = idEndereco;
+    }
+
+    public static String getRUA() {
+        return RUA;
+    }
+
+    public static void setRUA(String RUA) {
+        variaveis.RUA = RUA;
+    }
+
+    public static String getCEP() {
+        return CEP;
+    }
+
+    public static void setCEP(String CEP) {
+        variaveis.CEP = CEP;
+    }
+
+    public static String getLOGRAD() {
+        return LOGRAD;
+    }
+
+    public static void setLOGRAD(String LOGRAD) {
+        variaveis.LOGRAD = LOGRAD;
+    }
+
+    public static String getENDERECO() {
+        return ENDERECO;
+    }
+
+    public static void setENDERECO(String ENDERECO) {
+        variaveis.ENDERECO = ENDERECO;
+    }
+
+    public static String getNUMERO() {
+        return NUMERO;
+    }
+
+    public static void setNUMERO(String NUMERO) {
+        variaveis.NUMERO = NUMERO;
+    }
+
+    public static String getCOMPLEMETO() {
+        return COMPLEMETO;
+    }
+
+    public static void setCOMPLEMETO(String COMPLEMETO) {
+        variaveis.COMPLEMETO = COMPLEMETO;
+    }
+
+    public static String getBAIRRO() {
+        return BAIRRO;
+    }
+
+    public static void setBAIRRO(String BAIRRO) {
+        variaveis.BAIRRO = BAIRRO;
+    }
+
+    public static String getCIDADE() {
+        return CIDADE;
+    }
+
+    public static void setCIDADE(String CIDADE) {
+        variaveis.CIDADE = CIDADE;
+    }
+
+    public static String getUF() {
+        return UF;
+    }
+
+    public static void setUF(String UF) {
+        variaveis.UF = UF;
+    }
+
+    public static String getPAIS() {
+        return PAIS;
+    }
+
+    public static void setPAIS(String PAIS) {
+        variaveis.PAIS = PAIS;
+    }
+
+    // VARIAVEIS ENDEREÇO
+    public static String ID_ENDERECO = null;
+    public static String RUA         = null;
+    public static String CEP         = null;
+    public static String LOGRAD      = null;
+    public static String ENDERECO    = null;
+    public static String NUMERO      = null;
+    public static String COMPLEMETO  = null;
+    public static String BAIRRO      = null;
+    public static String CIDADE      = null;
+    public static String UF          = null;
+    public static String PAIS        = null;
+
 
     public static String getIdUser() {
         return ID_USER;

@@ -10,13 +10,20 @@
     <string name="MsgDadosLogin">INFORME OS DADOS DO SEU LOGIN !</string>
     <string name="MsgFazendoLogin">FAZENDO LOGIN AGUARDE …</string>
     <string name="MsgGravaDados">GRAVANDO INFORMAÇÕES AGUARDE …</string>
+    <string name="MsgCarregandoDados">CARREGANDO DADOS AGUARDE …</string>
+    <string name="MsgInformaDados">INFORME OS DADOS !</string>
+    <string name="MsgRegistroGravado">REGISTRO GRAVADO COM SUCESSO !</string>
 
     <!--> TELA DE SERVIÇOS <-->
     <string name="CfgConta">Conta</string>
     <string name="Compart">Compartilhar</string>
     <string name="Historico">Historico</string>
     <string name="Warnning">Denúncias</string>
-    <string name="Serviços">Serviços</string>
+    <string name="Serviços">Anúncios</string>
+    <string name="Inserir">Inserir</string>
+
+    <string name="Pestador">Prestador</string>
+    <string name="Contratante">Contratante</string>
 
 
     <!--> TELA DE INICIO <-->
@@ -25,6 +32,12 @@
     <string name="EdtLogin">USUARIO / E-MAIL</string>
     <string name="EdtSenha">SENHA</string>
 
+    <!--> TELA CONFIG CONTA<-->
+    <string name="TxtGerais">GERAIS</string>
+    <string name="TxtDadosPrest">DADOS</string>
+    <string name="TxtEndereço">ENDEREÇO</string>
+
+
     <!--> TELA CADASTRO <-->
     <string name="TxtNome">NOME :</string>
     <string name="TxtTelefone">TELEFONE :</string>
@@ -32,6 +45,7 @@
     <string name="TxtSenha">SENHA :</string>
     <string name="TxtSConfenha">CONFIRME SUA SENHA :</string>
     <string name="TxtEmail">EMAIL :</string>
+    <string name="TxtCPFCNPJ">CPF / CNPJ</string>
     <string name="BtnProx">PROXIMO -></string>
 
     <!--> TELA DE END <-->

@@ -281,14 +281,15 @@ public class ActivityLogin extends AppCompatActivity implements GoogleApiClient.
                     Var.setIdUser(PegaJson(Var.getBASE_API() + Var.getLOGIN_USUARIO() + params[0].toUpperCase() + "/" + params[1] + "/" + params[2]).replace("\"",""));
                     Log.i("LINK",Var.getBASE_API()+Var.RETORNA_USUARIO+Var.getID_USER().replace("\"",""));
                     TrataJson(PegaJson(Var.getBASE_API()+Var.RETORNA_USUARIO+Var.getID_USER()));
+                    TrataJsonEnd(PegaJson(Var.getBASE_API()+Var.RETORNA_ENDERECO+Var.getID_USER()));
                 }else if(TipoLogin.equals("GOOGLE")){
                     Var.setIdUser(PegaJson(Var.getBASE_API() + Var.getLOGIN_USUARIO_GOOGLE() + params[0] + "/" + params[1] + "/" + params[2] + "/" + params[3]).replace("\"",""));
-                    Log.i("LINK",Var.getBASE_API()+Var.RETORNA_USUARIO+Var.getID_USER().replace("\"",""));
                     TrataJson(PegaJson(Var.getBASE_API()+Var.RETORNA_USUARIO+Var.getID_USER()));
+                    TrataJsonEnd(PegaJson(Var.getBASE_API()+Var.RETORNA_ENDERECO+Var.getID_USER()));
                 }else{
                     Var.setIdUser(PegaJson(Var.getBASE_API() + Var.getLOGIN_USUARIO_FACEBOOK() + params[0] + "/" + params[1] + "/" + params[2]).replace("\"",""));
-                    Log.i("LINK",Var.getBASE_API()+Var.RETORNA_USUARIO+Var.getID_USER().replace("\"",""));
                     TrataJson(PegaJson(Var.getBASE_API()+Var.RETORNA_USUARIO+Var.getID_USER()));
+                    TrataJsonEnd(PegaJson(Var.getBASE_API()+Var.RETORNA_ENDERECO+Var.getID_USER()));
                 }
             } catch (IOException e) {
                 e.printStackTrace();
@@ -312,16 +313,44 @@ public class ActivityLogin extends AppCompatActivity implements GoogleApiClient.
         private void TrataJson(String json) throws JSONException {
             JSONObject jsonObject = new JSONObject(json);
             JSONObject Fields = jsonObject.getJSONObject("fields");
+
             Var.setNOME(Fields.getString("Nome"));
             Var.setEMAIL(Fields.getString("Email"));
+            Var.setCPFCNPJ(Fields.getString("CPF_CNPJ"));
+            Var.setTEL1(Fields.getString("Tel1"));
+            Var.setTEL2(Fields.getString("Tel2"));
+            Var.setTipoLogin(Fields.getString("Tipo_Login"));
+            Var.setPRESTADOR(Fields.getString("Prestador"));
+            Var.setPWD(Fields.getString("Senha"));
 
-            Log.i("NOME",Var.getNOME());
+
+            Log.i("NOME",Fields.toString());
+
+        }
+
+        private void TrataJsonEnd(String json) throws JSONException {
+            JSONObject jsonObject = new JSONObject(json);
+            JSONObject Fields = jsonObject.getJSONObject("fields");
+
+            Var.setIdEndereco(Fields.getString("ID_ENDERECO"));
+            Var.setRUA(Fields.getString("RUA"));
+            Var.setCEP(Fields.getString("CEP"));
+            Var.setLOGRAD(Fields.getString("LOGRAD"));
+            Var.setENDERECO(Fields.getString("ENDERECO"));
+            Var.setNUMERO(Fields.getString("NUMERO"));
+            Var.setCOMPLEMETO(Fields.getString("COMPLEMETO"));
+            Var.setBAIRRO(Fields.getString("BAIRRO"));
+            Var.setCIDADE(Fields.getString("CIDADE"));
+            Var.setUF(Fields.getString("UF"));
+            Var.setPAIS(Fields.getString("PAIS"));
+            Log.i("END",Fields.toString());
 
         }
 
 
 
     }
+
 
     private String PegaJson(String lnk) throws IOException {
         data = "";

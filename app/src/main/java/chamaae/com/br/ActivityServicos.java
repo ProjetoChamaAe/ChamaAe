@@ -1,5 +1,6 @@
 package chamaae.com.br;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -129,12 +130,19 @@ public class ActivityServicos extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_servicos) {
-            // Handle the camera action
+
         } else if (id == R.id.nav_cfgConta) {
+
+            Intent ChamaCfgConta = new Intent(this,ActivityCadastroPrincipal.class);
+            startActivity(ChamaCfgConta);
 
         } else if (id == R.id.nav_historico) {
 
         } else if (id == R.id.nav_share) {
+
+        } else if (id == R.id.nav_inserir){
+
+        }else if (id == R.id.nav_warning){
 
         }
 
@@ -148,7 +156,6 @@ public class ActivityServicos extends AppCompatActivity
     public boolean onKeyDown(int keyCode, KeyEvent event) {
 
         if(keyCode == KeyEvent.KEYCODE_BACK){
-            Log.i("EXIT","SAIR");
             finish();
         }
 

@@ -11,15 +11,14 @@
     tools:context="chamaae.com.br.ActivityCadastroPrincipal">
 
     <TabHost
-        android:layout_width="200dip"
-        android:layout_height="300dip"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
+        android:id="@+id/Abas"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_alignParentBottom="true"
-        android:id="@+id/Abas">
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentStart="true">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -34,32 +33,319 @@
             <FrameLayout
                 android:id="@android:id/tabcontent"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="wrap_content"
+                android:visibility="visible">
 
-                <LinearLayout
-                    android:id="@+id/tab1"
+                <RelativeLayout
+                    android:id="@+id/gerais"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="vertical">
 
-                </LinearLayout>
+                    <ScrollView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentTop="true"
+                        android:layout_marginTop="20dp">
 
-                <LinearLayout
-                    android:id="@+id/tab2"
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <RelativeLayout
+                                android:id="@+id/layoutScrool"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center">
+
+                                <EditText
+                                    android:id="@+id/EdtTel"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignLeft="@+id/TxtEmailFixo"
+                                    android:layout_alignStart="@+id/TxtEmailFixo"
+                                    android:layout_below="@+id/TxtTelFixo"
+                                    android:background="@drawable/edtcircular"
+                                    android:ems="10"
+                                    android:gravity="center"
+                                    android:inputType="phone" />
+
+                                <EditText
+                                    android:id="@+id/EdtTel2"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignLeft="@+id/EdtTel"
+                                    android:layout_alignStart="@+id/EdtTel"
+                                    android:layout_below="@+id/EdtTel"
+                                    android:background="@drawable/edtcircular"
+                                    android:ems="10"
+                                    android:gravity="center"
+                                    android:inputType="phone" />
+
+                                <EditText
+                                    android:id="@+id/EdtNome"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignLeft="@+id/TxtEmailFixo"
+                                    android:layout_alignStart="@+id/TxtEmailFixo"
+                                    android:layout_below="@+id/TxtNomeFixo"
+                                    android:background="@drawable/edtcircular"
+                                    android:ems="10"
+                                    android:gravity="center"
+                                    android:inputType="textPersonName"
+                                    android:singleLine="true" />
+
+                                <TextView
+                                    android:id="@+id/TxtNomeFixo"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignEnd="@+id/TxtEmailFixo"
+                                    android:layout_alignParentTop="true"
+                                    android:layout_alignRight="@+id/TxtEmailFixo"
+                                    android:layout_marginTop="28dp"
+                                    android:text="@string/TxtNome"
+                                    android:textSize="18sp"
+                                    android:textStyle="bold"
+                                    android:typeface="normal" />
+
+                                <EditText
+                                    android:id="@+id/EdtEmail"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignLeft="@+id/TxtCPFCNPJFixo"
+                                    android:layout_alignStart="@+id/TxtCPFCNPJFixo"
+                                    android:layout_below="@+id/TxtEmailFixo"
+                                    android:layout_marginTop="17dp"
+                                    android:background="@drawable/edtcircular"
+                                    android:ems="10"
+                                    android:gravity="center"
+                                    android:inputType="textPersonName"
+                                    android:singleLine="true" />
+
+                                <TextView
+                                    android:id="@+id/TxtEmailFixo"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignParentLeft="true"
+                                    android:layout_alignParentStart="true"
+                                    android:layout_below="@+id/EdtCNJPCPF"
+                                    android:layout_marginLeft="12dp"
+                                    android:layout_marginStart="12dp"
+                                    android:layout_marginTop="30dp"
+                                    android:text="@string/TxtEmail"
+                                    android:textSize="18sp"
+                                    android:textStyle="bold"
+                                    android:typeface="normal" />
+
+                                <TextView
+                                    android:id="@+id/TxtTelFixo"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignLeft="@+id/EdtTel"
+                                    android:layout_alignStart="@+id/EdtTel"
+                                    android:layout_below="@+id/EdtEmail"
+                                    android:layout_marginTop="25dp"
+                                    android:text="@string/TxtTelefone"
+                                    android:textSize="18sp"
+                                    android:textStyle="bold"
+                                    android:typeface="normal" />
+
+                                <RadioGroup
+                                    android:id="@+id/RgTipo"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:layout_below="@+id/EdtTel2"
+                                    android:layout_centerHorizontal="true"
+                                    android:layout_marginTop="20dp"
+                                    android:orientation="vertical">
+
+                                    <RadioButton
+                                        android:id="@+id/contratante"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:text="@string/Contratante"
+                                        android:checked="true"/>
+
+                                    <RadioButton
+                                        android:id="@+id/prestador"
+                                        android:layout_width="128dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginBottom="1dp"
+                                        android:text="@string/Pestador" />
+
+                                </RadioGroup>
+
+                                <TextView
+                                    android:id="@+id/TxtCPFCNPJFixo"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignLeft="@+id/TxtNomeFixo"
+                                    android:layout_alignStart="@+id/TxtNomeFixo"
+                                    android:layout_below="@+id/EdtNome"
+                                    android:layout_marginTop="20dp"
+                                    android:text="@string/TxtCPFCNPJ"
+                                    android:textSize="18sp"
+                                    android:textStyle="bold"
+                                    android:typeface="normal" />
+
+                                <EditText
+                                    android:id="@+id/EdtCNJPCPF"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignEnd="@+id/EdtTel"
+                                    android:layout_alignLeft="@+id/EdtNome"
+                                    android:layout_alignRight="@+id/EdtTel"
+                                    android:layout_alignStart="@+id/EdtNome"
+                                    android:layout_below="@+id/TxtCPFCNPJFixo"
+                                    android:height="10dp"
+                                    android:background="@drawable/edtcircular"
+                                    android:ems="10"
+                                    android:gravity="center"
+                                    android:singleLine="true" />
+                            </RelativeLayout>
+                        </LinearLayout>
+                    </ScrollView>
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/endereco"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="vertical">
 
-                </LinearLayout>
+                    <EditText
+                        android:id="@+id/EdtNro"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignEnd="@+id/BtnBuscarCEP"
+                        android:layout_alignRight="@+id/BtnBuscarCEP"
+                        android:layout_below="@+id/EdtRua"
+                        android:layout_marginTop="7dp"
+                        android:background="@drawable/edtcircular"
+                        android:ems="10"
+                        android:gravity="center"
+                        android:hint="@string/HintEdtNRO"
+                        android:inputType="textPersonName" />
 
-                <LinearLayout
-                    android:id="@+id/tab3"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical">
+                    <Spinner
+                        android:id="@+id/SpUf"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignBottom="@+id/EdtCidade"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignTop="@+id/EdtCidade"
+                        android:layout_toLeftOf="@+id/EdtCidade"
+                        android:layout_toStartOf="@+id/EdtCidade" />
 
-                </LinearLayout>
+                    <EditText
+                        android:id="@+id/EdtBairro"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_alignParentStart="true"
+                        android:layout_below="@+id/SpUf"
+                        android:layout_marginTop="13dp"
+                        android:background="@drawable/edtcircular"
+                        android:ems="10"
+                        android:gravity="center"
+                        android:hint="@string/HintEdtBairro"
+                        android:inputType="textPersonName" />
+
+                    <EditText
+                        android:id="@+id/EdtRua"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_alignParentStart="true"
+                        android:layout_below="@+id/EdtBairro"
+                        android:layout_marginTop="20dp"
+                        android:background="@drawable/edtcircular"
+                        android:ems="10"
+                        android:gravity="center"
+                        android:hint="@string/HintEdtRua"
+                        android:inputType="textPersonName" />
+
+                    <EditText
+                        android:id="@+id/EdtCidade"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_below="@+id/BtnBuscarCEP"
+                        android:layout_marginTop="13dp"
+                        android:background="@drawable/edtcircular"
+                        android:ems="10"
+                        android:gravity="center"
+                        android:hint="@string/HintEdtCidade"
+                        android:inputType="textPersonName" />
+
+                    <Button
+                        android:id="@+id/BtnBuscarCEP"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_below="@+id/EdtCep"
+                        android:layout_marginEnd="6dp"
+                        android:layout_marginRight="6dp"
+                        android:layout_marginTop="11dp"
+                        android:text="@string/BtnBuscaCEP" />
+
+                    <EditText
+                        android:id="@+id/EdtComp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_alignParentStart="true"
+                        android:layout_below="@+id/EdtNro"
+                        android:layout_marginTop="14dp"
+                        android:background="@drawable/edtcircular"
+                        android:ems="10"
+                        android:gravity="center"
+                        android:hint="@string/HintEdtComp"
+                        android:inputType="textPersonName" />
+
+                    <Button
+                        android:id="@+id/BtnSalvar"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_alignParentStart="true"
+                        android:layout_marginBottom="11dp"
+                        android:text="@string/BtnSalvar" />
+
+                    <EditText
+                        android:id="@+id/EdtCep"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignEnd="@+id/BtnBuscarCEP"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignRight="@+id/BtnBuscarCEP"
+                        android:layout_marginTop="30dp"
+                        android:background="@drawable/edtcircular"
+                        android:ems="10"
+                        android:gravity="center"
+                        android:hint="@string/HintEdtCEP"
+                        android:inputType="number" />
+                </RelativeLayout>
+
             </FrameLayout>
         </LinearLayout>
     </TabHost>
+
+
 </RelativeLayout>

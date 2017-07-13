@@ -4,6 +4,12 @@
     <group android:checkableBehavior="single">
 
         <item
+            android:id="@+id/nav_inserir"
+            android:title="@string/Inserir"
+            android:icon="@drawable/ic_add" />
+
+
+        <item
             android:id="@+id/nav_servicos"
             android:icon="@drawable/ic_servicos"
             android:title="@string/Serviços" />
